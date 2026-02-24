@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const currentUser = localStorage.getItem("currentUser");
@@ -24,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-        fetch(`${API_BASE}/products/${productId}`, {
+    fetch(`${API_BASE}/products/${productId}`, {
         headers: {
             "Connection-String": connStr,
             "ngrok-skip-browser-warning": "true"
@@ -47,8 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/* ===== HELPER ===== */
+function buildImageUrl(path) {
+    if (!path) return "";
+    if (path.startsWith("http")) return path;
+    return IMAGE_BASE + (path.startsWith("/") ? path : "/" + path);
+}
+
+
 /* ===== RENDER ===== */
 function renderDetail(p) {
+
     document.getElementById("productName").innerText = p.productName;
     document.getElementById("price").innerText =
         Number(p.price).toLocaleString() + " đ";
@@ -65,27 +72,20 @@ function renderDetail(p) {
     }
 
     // MAIN IMAGE
-    let mainSrc = p.images[0];
-    if (!mainSrc.startsWith("http")) {
-        mainSrc = IMAGE_BASE + mainSrc;
-    }
-    mainImage.src = mainSrc;
+    mainImage.src = buildImageUrl(p.images[0]);
 
     // THUMBNAILS
     p.images.forEach(img => {
-        let src = img;
-        if (!src.startsWith("http")) {
-            src = IMAGE_BASE + src;
-        }
+
+        const src = buildImageUrl(img);
 
         const thumb = document.createElement("img");
         thumb.src = src;
+
         thumb.onclick = () => {
             mainImage.src = src;
         };
+
         thumbList.appendChild(thumb);
     });
 }
-
-
-
