@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="pro-style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SEARCH + SORT -->
+    <div class="toolbar">
+
+
+        <input type="text" id="searchInput" placeholder="Tìm theo tên sản phẩm...">
+
+    <input type="text" id="minPrice" placeholder="Giá từ">
+    <input type="text" id="maxPrice" placeholder="Giá đến">
+
+    <select id="sortSelect">
+        <option value="">Sắp xếp</option>
+        <option value="price_asc">Giá tăng dần</option>
+        <option value="price_desc">Giá giảm dần</option>
+    </select>
+
+   <button onclick="loadProducts()">Tìm kiếm</button>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="productList" class="product-grid"></div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <button onclick="loadDbSpace()">Dung lượng CSDL</button>
+    <div id="dbSpace"></div>
+</footer>
+
+<script src="config.js"></script>
+<script src="pro.js"></script>
+
+
+</body>
+</html>

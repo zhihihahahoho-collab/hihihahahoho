@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f172a;
+}
+
+/*Card tổng*/
+.card {
+    position: relative;
+    width: 660px;
+    height: 440px;
+    background: #13111b;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 8px solid #13111b;
+}
+
+/* Background trượt */
+.card-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    background: #3c23c9;
+    border-radius: 12px;
+    transition: transform 0.65s ease-in-out;
+    z-index: 2;
+}
+
+.card.login .card-bg {
+    transform: translateX(100%);
+}
+/* Hero + Form (chung) */
+.hero,
+.form {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.65s ease-in-out;
+}
+/* Hero */
+.hero {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    color: #f9f9f9;
+    text-align: center;
+}
+
+.hero p {
+    color: #cac9d2;
+}
+/* Hero Register / Login */
+.hero.register {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.hero.login {
+    left: 50%;
+    transform: translateX(100%);
+}
+/* Hero active */
+.card:not(.login) .hero.register,
+.card.login .hero.login {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+/* FORM */
+.form {
+    z-index: 1;
+    background: #13111b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    gap: 20px;
+}
+.form h2 {
+    color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.form form {
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* Form vị trí */
+.form.register {
+    left: 50%;
+    transform: translateX(100%);
+}
+
+.form.login {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+/* Form active */
+.card:not(.login) .form.register,
+.card.login .form.login {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+/* Input + Button */
+.form input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    outline: none;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form button,
+.hero button {
+    padding: 12px 40px;
+    border-radius: 32px;
+    border: 1px solid #f9f9f9;
+    background: transparent;
+    color: inherit;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    height: 44px;
+    font-weight: 600;
+}
+
+.hero button:hover {
+    background: #f9f9f9;
+    color: #3c23c9;
+}
+
+.form button {
+    background: #3c23c9;
+    border: none;
+}
+
+
+
+
+
